@@ -1,18 +1,19 @@
-import reactLogo from './assets/react.svg'
-import './App.css'
+import Navbar from './Navbar.tsx';
+import Home from './Home.tsx';
 
-function App() {
+
+const App: React.FC = () => {
+  const handleClick = (yo: string, e: React.MouseEvent<HTMLButtonElement>) => {
+      // Handle the click event here
+      console.log(yo + "  -  " + e.target);
+  };
 
   return (
-    <>
-      <div>
-        <a href="#" target="_self">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>ehe factory</h1>
-    </>
-  )
-}
+    <div className='App'>
+        <Navbar/>
+    </div>
+      
+  );
+};
 
-export default App
+export default App;
