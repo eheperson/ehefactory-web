@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "allowJs": true,
     "target": "ES2020",
     "useDefineForClassFields": true,
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
@@ -20,6 +21,14 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"],
+  "include": [
+    "src",
+    "src/**/*"
+  ],
+  "typeRoots": [
+    "node_modules/@types",
+    "./globals.d.ts",
+    "./shaders.d.ts"
+  ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

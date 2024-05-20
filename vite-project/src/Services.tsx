@@ -1,22 +1,33 @@
-import React, { useState } from 'react';
+import ServicesList from './ServiceList';
+import useFetch from './useFetch';
 
-const Services: React.FC = () => {
-    const [services, _] = useState([
-        { name: "Service 1", description: "Description 1", id:1 },
-        { name: "Service 2", description: "Description 2", id:2},
-        { name: "Service 3", description: "Description 3", id:3},
-    ])
+export interface ServiceInterface {
+    title: string;
+    body: string;
+    author: string;
+    id: number;
+}
+
+
+const Services: React.FC= () => {
+    const {data: services, isPending, error} = useFetch('http://localhost:8000/blogs');
+
     return (
         <>
-        <div className='services'>
-            {services.map((service) => (
-                <div className='service-preview' key={service.id}>
-                    <h2>{service.name}</h2>
-                    <p>{service.description}</p>
-                </div>
-            ))}
-
-        </div>
+            {error && <div>{error}</div>}
+            {isPending && !error && <div>Loading...</div>}
+            {
+                (services && !error && !isPending) && // Add parentheses here
+                <ServicesList 
+                    services={services ?? []}
+                    title="All Services"/>
+            }
+            {
+                (services && !error && !isPending) &&
+                <ServicesList
+                services={services?.filter((blog)=> blog.author==="tom") ?? []}
+                title="Tom's Services"/>
+            }
         </>
     )
 }
