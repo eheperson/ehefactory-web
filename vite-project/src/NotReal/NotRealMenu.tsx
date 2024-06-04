@@ -29,6 +29,9 @@ const NotRealMenu: React.FC = () => {
         <option value="ThreeFiberDreiLeva">ThreeFiberDreiLeva</option>
         <option value="ShaderEngine">ShaderEngine</option>
         <option value="ShaderLab">ShaderLab</option>
+        <option value="ParticleSimulator">ParticleSimulator</option>
+        <option value="FBOParticlesChaotic">FBOParticlesChaotic</option>
+        <option value="FBOParticlesGeometric">FBOParticlesGeometric</option>
       </select>
     </div>
   );

@@ -5,7 +5,9 @@ import ThreeFiberDreiLeva from "./ThreeFiberDreiLeva";
 import ThreeFiberDefault from "./ThreeFiberDefault";
 import ShaderEngine from "./ShaderEngine";
 import ShaderLab from "./ShaderLab";
-import ShaderSim from "./ShaderSim";
+import ParticleSimulator from "./ParticleSimulator";
+import FBOParticlesChaotic from "./FBOParticlesChaotic";
+import FBOParticlesGeometric from "./FBOParticlesGeometric";
 
 interface CanvasContextProps {
     selectedComponent: string;
@@ -40,6 +42,12 @@ interface CanvasContextProps {
                         return <ShaderEngine />;
                     case 'ShaderLab':
                         return <ShaderLab />;
+                    case 'ParticleSimulator':
+                        return <ParticleSimulator />;
+                    case 'FBOParticlesChaotic':
+                        return <FBOParticlesChaotic />;
+                    case 'FBOParticlesGeometric':
+                        return <FBOParticlesGeometric />;
                     case 'x':
                         return <ThreeFiberDefault />;
                     default:
