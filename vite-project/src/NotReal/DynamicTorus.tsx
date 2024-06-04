@@ -1,16 +1,13 @@
-import { OrbitControls, Html, Tube } from "@react-three/drei";
-import { Canvas, useFrame} from "@react-three/fiber";
-import { useMemo, useRef, Suspense } from "react";
-import { MathUtils } from "three";
 import * as THREE from 'three';
+import { useMemo, useRef, Suspense } from "react";
+import { OrbitControls, Html } from "@react-three/drei";
+import { Canvas, useFrame } from "@react-three/fiber";
 import { Bloom, DepthOfField, EffectComposer, Noise, Vignette } from '@react-three/postprocessing'
-
 
 import vertexShader from '../assets/shaders/DynamicTorus.vs';
 import fragmentShader from '../assets/shaders/DynamicTorus.fs';
 
 const Blob = () => {
-  // This reference will give us direct access to the mesh
   const meshRef = useRef<THREE.Mesh>(null);
   const hoverRef = useRef<boolean>(false);
 
@@ -31,7 +28,7 @@ const Blob = () => {
     const material = meshRef.current?.material as THREE.ShaderMaterial;
     if (material) {
       material.uniforms.u_time.value = 0.4 * clock.getElapsedTime();
-      material.uniforms.u_intensity.value = MathUtils.lerp(
+      material.uniforms.u_intensity.value = THREE.MathUtils.lerp(
         material.uniforms.u_intensity.value,
         hoverRef.current ? 0.5 : 0.0,
         0.02
@@ -70,7 +67,7 @@ const DynamicTorus = () => {
         stencil: false,
         depth: false
       }}
-      >
+    >
       <color attach="background" args={["#050505"]} />
       <fog color="#161616" attach="fog" near={8} far={30} />
       <ambientLight intensity={10} />

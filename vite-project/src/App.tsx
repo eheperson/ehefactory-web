@@ -1,11 +1,12 @@
-import Navbar from './Navbar.tsx';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 import Home from './Home';
-import Services from './Services';
 import About from './About';
-import NotReal from './NotReal/NotReal.tsx';
 import Create from './Create';
+import Navbar from './Navbar.tsx';
 import NotFound from './NotFound';
+import Services from './Services';
+import NotReal from './NotReal/NotReal.tsx';
 import ServiceDetails from './ServiceDetails.tsx';
 
 const App: React.FC = () => {
@@ -30,9 +31,7 @@ const App: React.FC = () => {
         </div>
       </div>
     </Router>
-    </>
-
-      
+    </>  
   );
 };
 

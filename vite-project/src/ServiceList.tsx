@@ -3,15 +3,15 @@ import { ServiceInterface } from './Services';
 import { Link } from 'react-router-dom';
 
 interface ServicesListProps {
-  services: ServiceInterface[];
-  title: string;
+    services: ServiceInterface[];
+    title: string;
 }
 
 const ServicesList: React.FC<ServicesListProps> = (props) => {
     const services = props.services;
     const title = props.title;
 
-    return ( 
+    return (
         <>
             <div className='blog-list'>
                 <h2>{title}</h2>
@@ -26,7 +26,7 @@ const ServicesList: React.FC<ServicesListProps> = (props) => {
                 ))}
             </div>
         </>
-     );
+    );
 }
- 
+
 export default ServicesList;

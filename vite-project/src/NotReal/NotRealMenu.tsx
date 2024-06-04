@@ -23,11 +23,11 @@ const NotRealMenu: React.FC = () => {
       }}
     >
       <h3>Select a Component:</h3>
-      <select onChange={handleSelectChange} defaultValue="ShaderLab">
+      <select onChange={handleSelectChange} defaultValue="ShaderEngineFBO">
         <option value="x">Default Component</option>
         <option value="ThreeFiberBasics">ThreeFiberBasics</option>
         <option value="ThreeFiberDreiLeva">ThreeFiberDreiLeva</option>
-        <option value="ShaderEngine">ShaderEngine</option>
+        <option value="ShaderEngineFBO">ShaderEngineFBO</option>
         <option value="DynamicTorus">DynamicTorus</option>
         <option value="ShaderLab">ShaderLab</option>
         <option value="ParticleSimulator">ParticleSimulator</option>

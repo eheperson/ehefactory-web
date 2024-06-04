@@ -1,7 +1,7 @@
 import * as THREE from "three";
-import React, {useMemo, useRef, useState} from "react";
-import {useFBO} from "@react-three/drei";
-import {useFrame, createPortal} from "@react-three/fiber";
+import { useFBO } from "@react-three/drei";
+import React, { useMemo, useRef, useState } from "react";
+import { useFrame, createPortal } from "@react-three/fiber";
 
 import vertexShader from '../assets/shaders/FBOParticles.vs';
 import fragmentShader from '../assets/shaders/FBOParticles.fs';
@@ -13,7 +13,6 @@ interface FBOParticlesProps {
 
 const FBOParticles: React.FC<FBOParticlesProps> = ({ particleSize, simulationHook }) => {
     const [size, _] = useState(particleSize);
-    // const size = particleSize;
     const simulationMaterial = simulationHook(particleSize);
     const points = useRef<THREE.Points>(null);
 
@@ -60,7 +59,7 @@ const FBOParticles: React.FC<FBOParticlesProps> = ({ particleSize, simulationHoo
 
         (points.current!.material as THREE.ShaderMaterial).uniforms.uPositions.value = renderTarget!.texture;
         simulationMaterial!.uniforms.uTime.value = clock.elapsedTime;
-        
+
 
         console.log("Particle positions:", particlesPosition);
         console.log("Particle positions length:", particlesPosition.length);

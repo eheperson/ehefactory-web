@@ -1,8 +1,8 @@
-import { Canvas, events, useFrame } from "@react-three/fiber";
-import React, { useRef, useState } from 'react';
 import * as THREE from 'three';
-import { MeshWobbleMaterial, OrbitControls, useHelper } from "@react-three/drei";
+import React, { useRef } from 'react';
 import { Leva, useControls } from "leva"
+import { Canvas, useFrame } from "@react-three/fiber";
+import { MeshWobbleMaterial, OrbitControls, useHelper } from "@react-three/drei";
 
 interface TorusKnotProps {
     position: [number, number, number];
@@ -41,7 +41,7 @@ const Scene: React.FC = () => {
         },
     });
 
-    const {color, radius, diameter, radialSegments, tubularSegments, p} = useControls({
+    const { color, radius, diameter, radialSegments, tubularSegments, p } = useControls({
         color: '#0000ff',
         radius: {
             value: 1.9,
@@ -75,22 +75,22 @@ const Scene: React.FC = () => {
         },
     });
 
-    return (  
+    return (
         <>
             <directionalLight
-            position={[0, 0, 2]} 
-            intensity={lightIntensity} 
-            ref={directionalLightRef}
-            color={lightColor}/>
+                position={[0, 0, 2]}
+                intensity={lightIntensity}
+                ref={directionalLightRef}
+                color={lightColor} />
             <ambientLight intensity={0.4} />
-            <group position={[0,0,0]}>
+            <group position={[0, 0, 0]}>
                 <TorusKnot
-                position={[0, 0, 0]}
-                size={[radius,diameter,radialSegments,tubularSegments,p]}
-                color={color}
-                offset={0} />
+                    position={[0, 0, 0]}
+                    size={[radius, diameter, radialSegments, tubularSegments, p]}
+                    color={color}
+                    offset={0} />
             </group>
-            <OrbitControls enableZoom={true} enableRotate={true}/> 
+            <OrbitControls enableZoom={true} enableRotate={true} />
         </>
     );
 }
@@ -99,14 +99,14 @@ const ThreeFiberDreiLeva: React.FC = () => {
 
     return (
         <>
-            <div className="leva__panel"> 
+            <div className="leva__panel">
                 <Leva fill />
             </div>
-            <Canvas camera={{ position: [0, 0, 5] }}> 
+            <Canvas camera={{ position: [0, 0, 5] }}>
                 <Scene />
             </Canvas>
         </>
     );
 }
- 
+
 export default ThreeFiberDreiLeva;

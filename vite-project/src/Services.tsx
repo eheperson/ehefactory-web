@@ -1,5 +1,5 @@
-import ServicesList from './ServiceList';
 import useFetch from './useFetch';
+import ServicesList from './ServiceList';
 
 export interface ServiceInterface {
     title: string;
@@ -8,9 +8,8 @@ export interface ServiceInterface {
     id: number;
 }
 
-
-const Services: React.FC= () => {
-    const {data: services, isPending, error} = useFetch('http://localhost:8000/blogs');
+const Services: React.FC = () => {
+    const { data: services, isPending, error } = useFetch('http://localhost:8000/blogs');
 
     return (
         <>
@@ -18,18 +17,18 @@ const Services: React.FC= () => {
             {isPending && !error && <div>Loading...</div>}
             {
                 (services && !error && !isPending) && // Add parentheses here
-                <ServicesList 
+                <ServicesList
                     services={services ?? []}
-                    title="All Services"/>
+                    title="All Services" />
             }
             {
                 (services && !error && !isPending) &&
                 <ServicesList
-                services={services?.filter((blog)=> blog.author==="tom") ?? []}
-                title="Tom's Services"/>
+                    services={services?.filter((blog) => blog.author === "tom") ?? []}
+                    title="Tom's Services" />
             }
         </>
     )
 }
- 
+
 export default Services;
