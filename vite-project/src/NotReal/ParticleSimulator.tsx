@@ -4,8 +4,8 @@ import { useMemo, useRef } from "react";
 import * as THREE from "three";
 
 
-import vertexShader from '../assets/particleSimVertexShader.glsl';
-import fragmentShader from '../assets/particleSimFragmentShader.glsl';
+import vertexShader from '../assets/shaders/ParticleSimulator.vs';
+import fragmentShader from '../assets/shaders/ParticleSimulator.fs';
 
 interface CustomGeometryParticlesProps {
     count: number;

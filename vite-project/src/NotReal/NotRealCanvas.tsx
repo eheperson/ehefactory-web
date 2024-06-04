@@ -8,6 +8,7 @@ import ShaderLab from "./ShaderLab";
 import ParticleSimulator from "./ParticleSimulator";
 import FBOParticlesChaotic from "./FBOParticlesChaotic";
 import FBOParticlesGeometric from "./FBOParticlesGeometric";
+import DynamicTorus from "./DynamicTorus";
 
 interface CanvasContextProps {
     selectedComponent: string;
@@ -42,6 +43,8 @@ interface CanvasContextProps {
                         return <ShaderEngine />;
                     case 'ShaderLab':
                         return <ShaderLab />;
+                    case 'DynamicTorus':
+                        return <DynamicTorus />;
                     case 'ParticleSimulator':
                         return <ParticleSimulator />;
                     case 'FBOParticlesChaotic':

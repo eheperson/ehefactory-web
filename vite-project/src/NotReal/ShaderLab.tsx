@@ -3,9 +3,9 @@ import * as THREE from 'three';
 import { Canvas, useFrame, useLoader } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 
-import vertexShader from '../assets/labVertexShader.glsl';
-import fragmentShader from '../assets/labFragmentShader.glsl';
-import imageFile from '../assets/flyd-xcG3Yg6iCQg-unsplash.jpg';
+import vertexShader from '../assets/shaders/ShaderLab.vs';
+import fragmentShader from '../assets/shaders/ShaderLab.fs';
+import imageFile from '../assets/images/flyd-xcG3Yg6iCQg-unsplash.jpg';
 
 const TestPlane: React.FC = () => {
   const shaderRef = useRef<THREE.ShaderMaterial>(null);
@@ -13,9 +13,7 @@ const TestPlane: React.FC = () => {
 
 
   useFrame(({ clock }) => {
-    if (shaderRef.current) {
-      shaderRef.current.uniforms.uTime.value = clock.getElapsedTime();
-    }
+    shaderRef.current!.uniforms.uTime.value = clock.getElapsedTime();
   });
 
   const uniforms = React.useMemo(() => ({

@@ -23,12 +23,12 @@
   },
   "include": [
     "src",
-    "src/**/*"
+    "src/**/*",
+    "./custom.d.ts"
   ],
   "typeRoots": [
     "node_modules/@types",
-    "./globals.d.ts",
-    "./shaders.d.ts"
   ],
+  
   "references": [{ "path": "./tsconfig.node.json" }]
 }

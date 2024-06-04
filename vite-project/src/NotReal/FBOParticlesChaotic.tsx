@@ -5,8 +5,8 @@ import * as THREE from "three";
 
 import FBOParticles from "./FBOParticles";
 
-import simulationVertexShader from '../assets/fboSimulationChaoticVertexShader.glsl';
-import simulationFragmentShader from '../assets/fboSimulationChaoticFragmentShader.glsl';
+import simulationVertexShader from '../assets/shaders/FBOParticlesChaotic.vs';
+import simulationFragmentShader from '../assets/shaders/FBOParticlesChaotic.fs';
 
 
 const getRandomData = (width:number, height:number) : Float32Array => {

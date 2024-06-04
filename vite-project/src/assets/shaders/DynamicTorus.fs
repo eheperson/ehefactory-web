@@ -9,7 +9,8 @@ void main() {
   
   vec3 color = vec3(abs(vUv - 0.5) * 1.0  * (1.0 - distort), 0.5); 
 
-  vec3 finalColor = color * 0.5;
+  // vec3 finalColor = color * 0.5;
+  vec3 finalColor = color * 1.0;
 
   gl_FragColor = vec4(finalColor, 1.0);
 }

@@ -6,8 +6,8 @@ import * as THREE from 'three';
 import { Bloom, DepthOfField, EffectComposer, Noise, Vignette } from '@react-three/postprocessing'
 
 
-import vertexShader from '../assets/shaders/ShaderEngine.vs';
-import fragmentShader from '../assets/shaders/ShaderEngine.fs';
+import vertexShader from '../assets/shaders/DynamicTorus.vs';
+import fragmentShader from '../assets/shaders/DynamicTorus.fs';
 
 const Blob = () => {
   // This reference will give us direct access to the mesh
@@ -59,7 +59,7 @@ const Blob = () => {
 };
 
 
-const ShaderEngine = () => {
+const DynamicTorus = () => {
   return (
     <Canvas
       camera={{ position: [0, 0, 20] }}
@@ -71,8 +71,8 @@ const ShaderEngine = () => {
         depth: false
       }}
       >
-      {/* <color attach="background" args={["#050505"]} />
-      <fog color="#161616" attach="fog" near={8} far={30} /> */}
+      <color attach="background" args={["#050505"]} />
+      <fog color="#161616" attach="fog" near={8} far={30} />
       <ambientLight intensity={10} />
       <directionalLight position={[-1, 2, 2]} intensity={4} />
       <Suspense fallback={<Html center>Loading.</Html>}>
@@ -80,14 +80,14 @@ const ShaderEngine = () => {
       </Suspense>
       {/* <axesHelper /> */}
       <OrbitControls />
-      {/* <EffectComposer>
+      <EffectComposer>
         <Bloom luminanceThreshold={0} luminanceSmoothing={0.9} height={300} />
         <DepthOfField focusDistance={0.5} focalLength={0.02} bokehScale={0.1} height={500} />
         <Vignette eskil={false} offset={0.1} darkness={1.1} />
         <Noise opacity={0.02} />
-      </EffectComposer> */}
+      </EffectComposer>
     </Canvas>
   );
 };
 
-export default ShaderEngine;
+export default DynamicTorus;

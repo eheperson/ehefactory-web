@@ -1,11 +1,10 @@
 import * as THREE from "three";
-import React, { useMemo, useRef, useState } from "react";
-import { OrbitControls, useFBO } from "@react-three/drei";
-import { Canvas, useFrame, createPortal } from "@react-three/fiber";
+import React, {useMemo, useRef, useState} from "react";
+import {useFBO} from "@react-three/drei";
+import {useFrame, createPortal} from "@react-three/fiber";
 
-
-import vertexShader from '../assets/fboParticlesVertexShader.glsl';
-import fragmentShader from '../assets/fboParticlesFragmentShader.glsl';
+import vertexShader from '../assets/shaders/FBOParticles.vs';
+import fragmentShader from '../assets/shaders/FBOParticles.fs';
 
 interface FBOParticlesProps {
     particleSize: number;
@@ -13,7 +12,7 @@ interface FBOParticlesProps {
 }
 
 const FBOParticles: React.FC<FBOParticlesProps> = ({ particleSize, simulationHook }) => {
-    const [size, setSize] = useState(particleSize);
+    const [size, _] = useState(particleSize);
     // const size = particleSize;
     const simulationMaterial = simulationHook(particleSize);
     const points = useRef<THREE.Points>(null);
@@ -58,15 +57,13 @@ const FBOParticles: React.FC<FBOParticlesProps> = ({ particleSize, simulationHoo
         gl.render(scene, camera);
         gl.setRenderTarget(null);
 
-        if (points.current && renderTarget.texture) {
-            (points.current.material as THREE.ShaderMaterial).uniforms.uPositions.value = renderTarget.texture;
-        }
 
-        if (simulationMaterial) {
-            simulationMaterial.uniforms.uTime.value = clock.elapsedTime;
-        }
+        (points.current!.material as THREE.ShaderMaterial).uniforms.uPositions.value = renderTarget!.texture;
+        simulationMaterial!.uniforms.uTime.value = clock.elapsedTime;
+        
 
-        console.log("Particle positions:", particlesPosition.length);
+        console.log("Particle positions:", particlesPosition);
+        console.log("Particle positions length:", particlesPosition.length);
         console.log("Elapsed time :", clock.elapsedTime);
     });
     return (

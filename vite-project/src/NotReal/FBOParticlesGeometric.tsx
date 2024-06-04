@@ -5,8 +5,8 @@ import * as THREE from "three";
 
 import FBOParticles from "./FBOParticles";
 
-import simulationVertexShader from '../assets/fboSimulationGeometricVertexShader.glsl';
-import simulationFragmentShader from '../assets/fboSimulationGeometricFragmentShader.glsl';
+import simulationVertexShader from '../assets/shaders/FBOParticlesGeometric.vs';
+import simulationFragmentShader from '../assets/shaders/FBOParticlesGeometric.fs';
 
 
 const getRandomDataSphere = (width:number, height:number) => {
