@@ -50,8 +50,8 @@ const CustomGeometryParticles: React.FC<CustomGeometryParticlesProps> = (props) 
       points.current.material.uniforms.uTime.value = clock.elapsedTime;
     }
 
-    console.log("uTime  :", uniforms.uTime.value);
-    console.log("uRadius  :", uniforms.uRadius.value);
+    // console.log("uTime  :", uniforms.uTime.value);
+    // console.log("uRadius  :", uniforms.uRadius.value);
   });
 
   return (
@@ -77,7 +77,7 @@ const ParticleSimulator: React.FC = () => {
   return (
     <Canvas camera={{ position: [2.0, 2.0, 2.0] }}>
       <ambientLight intensity={0.5} />
-      <CustomGeometryParticles count={4000} />
+      <CustomGeometryParticles count={128*128} />
       <OrbitControls />
     </Canvas>
   );

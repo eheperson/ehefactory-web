@@ -7,11 +7,14 @@ import vertexShader from '../assets/shaders/FBOParticles.vs';
 import fragmentShader from '../assets/shaders/FBOParticles.fs';
 
 interface FBOParticlesProps {
+    particleColorClose?: THREE.Vector3;
+    particleColorFar?: THREE.Vector3;
+    particleRadius: number;
     particleSize: number;
     simulationHook: (size: number) => THREE.ShaderMaterial;
 }
 
-const FBOParticles: React.FC<FBOParticlesProps> = ({ particleSize, simulationHook }) => {
+const FBOParticles: React.FC<FBOParticlesProps> = ({ particleSize=256,particleRadius=2.0, particleColorClose=new THREE.Vector3(0.34, 0.53, 0.96), particleColorFar=new THREE.Vector3(0.97, 0.70, 0.45), simulationHook }) => {
     const [size, _] = useState(particleSize);
     const simulationMaterial = simulationHook(particleSize);
     const points = useRef<THREE.Points>(null);
@@ -43,9 +46,10 @@ const FBOParticles: React.FC<FBOParticlesProps> = ({ particleSize, simulationHoo
     }, [size]);
 
     const uniforms = useMemo(() => ({
-        uPositions: {
-            value: null,
-        }
+        uPositions: {value: 0.0,},
+        uRadius: {value: particleRadius,},
+        uParticleColorClose: {value: particleColorClose},
+        uParticleColorFar: {value: particleColorFar},
     }), []);
 
     useFrame((state) => {
@@ -61,9 +65,9 @@ const FBOParticles: React.FC<FBOParticlesProps> = ({ particleSize, simulationHoo
         simulationMaterial!.uniforms.uTime.value = clock.elapsedTime;
 
 
-        console.log("Particle positions:", particlesPosition);
-        console.log("Particle positions length:", particlesPosition.length);
-        console.log("Elapsed time :", clock.elapsedTime);
+        // console.log("Particle positions:", particlesPosition);
+        // console.log("Particle positions length:", particlesPosition.length);
+        // console.log("Elapsed time :", clock.elapsedTime);
     });
     return (
         <>

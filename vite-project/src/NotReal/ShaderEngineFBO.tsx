@@ -8,6 +8,8 @@ import FBOParticles from "./FBOParticles";
 import vertexShader from '../assets/shaders/ShaderEngineFBO.vs';
 import fragmentShader from '../assets/shaders/ShaderEngineFBO.fs';
 
+const geometrySize = 200.0;
+
 const getRandomDataSphere = (width: number, height: number) => {
   // we need to create a vec4 since we're passing the positions to the fragment shader
   // data textures need to have 4 components, R, G, B, and A
@@ -17,7 +19,7 @@ const getRandomDataSphere = (width: number, height: number) => {
   for (let i = 0; i < length; i++) {
     const stride = i * 4;
 
-    const distance = Math.sqrt((Math.random())) * 2.0;
+    const distance = Math.sqrt((Math.random())) * geometrySize;
     const theta = THREE.MathUtils.randFloatSpread(360);
     const phi = THREE.MathUtils.randFloatSpread(360);
 
@@ -37,9 +39,9 @@ const getRandomDataBox = (width: number, height: number) => {
   for (let i = 0; i < data.length; i++) {
     const stride = i * 4;
 
-    data[stride] = (Math.random() - 0.5) * 2.0;
-    data[stride + 1] = (Math.random() - 0.5) * 2.0;
-    data[stride + 2] = (Math.random() - 0.5) * 2.0;
+    data[stride] = (Math.random() - 0.5) * geometrySize;
+    data[stride + 1] = (Math.random() - 0.5) * geometrySize;
+    data[stride + 2] = (Math.random() - 0.5) * geometrySize;
     data[stride + 3] = 1.0;
   }
   return data;
@@ -82,13 +84,16 @@ const useSimulationMaterial = (size: number) => {
 };
 
 const ShaderEngineFBO = () => {
-
   return (
     <Canvas
       camera={{ position: [1.5, 1.5, 2.5] }}>
       <ambientLight intensity={10} />
       <FBOParticles
-        particleSize={750}
+        particleColorClose={new THREE.Vector3(0.34, 0.53, 0.96)}
+        particleColorFar={new THREE.Vector3(0.34, 0.53, 0.96)}
+        // particleColorFar={new THREE.Vector3(0.97, 0.70, 0.45)}
+        particleRadius={4}
+        particleSize={128 * 4}
         simulationHook={useSimulationMaterial}
       />
       {/* <axesHelper /> */}

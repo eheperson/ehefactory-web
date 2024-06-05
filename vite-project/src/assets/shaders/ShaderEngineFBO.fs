@@ -13,7 +13,7 @@ void main() {
   vec3 spherePositions = texture2D(positionsA, vUv).rgb;
   vec3 boxPositions = texture2D(positionsB, vUv).rgb;
 
-  vec3 pos = mix(spherePositions, spherePositions, time);
+  vec3 pos = mix(boxPositions, spherePositions, time);
 
   gl_FragColor = vec4(pos, 1.0);
 }
