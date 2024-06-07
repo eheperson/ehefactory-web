@@ -55,7 +55,7 @@ const NotRealCanvas: React.FC = () => {
                     case 'x':
                         return <ThreeFiberDefault />;
                     default:
-                        return <ShaderEngineFBO />;
+                        return <ShaderLab />;
                 }
             })()}
         </div>
