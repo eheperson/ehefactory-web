@@ -75,11 +75,13 @@ const CustomGeometryParticles: React.FC<CustomGeometryParticlesProps> = (props) 
 
 const ParticleSimulator: React.FC = () => {
   return (
-    <Canvas camera={{ position: [2.0, 2.0, 2.0] }}>
-      <ambientLight intensity={0.5} />
-      <CustomGeometryParticles count={128*128} />
-      <OrbitControls />
-    </Canvas>
+    <div style={{ width: 600, height: 600, display: "flex", justifyContent: "center", alignItems: "center" }}>
+      <Canvas camera={{ position: [2.0, 2.0, 2.0] }}>
+        <ambientLight intensity={0.5} />
+        <CustomGeometryParticles count={128 * 128} />
+        <OrbitControls />
+      </Canvas>
+    </div>
   );
 }
 

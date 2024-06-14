@@ -2,8 +2,8 @@ import * as THREE from 'three';
 import React, { useRef, Suspense, useState, useEffect } from 'react';
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 
-import vertexShader from '../assets/shaders/ShaderLab.vs';
-import fragmentShader from '../assets/shaders/ShaderLab.fs';
+import vertexShader from '../assets/shaders/RayMarchingEyeBall.vs';
+import fragmentShader from '../assets/shaders/RayMarchingEyeBall.fs';
 
 
 const TestPlane: React.FC = () => {
@@ -21,7 +21,7 @@ const TestPlane: React.FC = () => {
     if (shaderRef.current) {
       shaderRef.current.uniforms.uTime.value = clock.getElapsedTime();
     }
-    // console.log("THREE size.width: ", size.width, "THREE size.height: ", size.height)
+    console.log("THREE size.width: ", size.width, "THREE size.height: ", size.height)
   });
 
   return (
@@ -74,8 +74,8 @@ const Scene: React.FC = () => {
   );
 };
 
-const ShaderLab: React.FC = () => {
+const RayMarchingExample: React.FC = () => {
   return <Scene />;
 };
 
-export default ShaderLab;
+export default RayMarchingExample;

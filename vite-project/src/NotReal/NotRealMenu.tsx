@@ -4,7 +4,7 @@ import { TbAppsOff, TbApps } from "react-icons/tb";
 
 const NotRealMenu: React.FC = () => {
   const { setSelectedComponent } = useContext(CanvasContext);
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
 
   const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedComponent(event.target.value);
@@ -55,6 +55,8 @@ const NotRealMenu: React.FC = () => {
             <option value="ThreeFiberDreiLeva">ThreeFiberDreiLeva</option>
             <option value="ShaderEngineFBO">ShaderEngineFBO</option>
             <option value="DynamicTorus">DynamicTorus</option>
+            <option value="Generative2D">Generative2D</option>
+            <option value="RayMarchingExample">RayMarchingExample</option>
             <option value="ShaderLab">ShaderLab</option>
             <option value="ParticleSimulator">ParticleSimulator</option>
             <option value="FBOParticlesChaotic">FBOParticlesChaotic</option>

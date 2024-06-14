@@ -85,20 +85,23 @@ const useSimulationMaterial = (size: number) => {
 
 const ShaderEngineFBO = () => {
   return (
-    <Canvas
-      camera={{ position: [1.5, 1.5, 2.5] }}>
-      <ambientLight intensity={10} />
-      <FBOParticles
-        particleColorClose={new THREE.Vector3(0.34, 0.53, 0.96)}
-        particleColorFar={new THREE.Vector3(0.34, 0.53, 0.96)}
-        // particleColorFar={new THREE.Vector3(0.97, 0.70, 0.45)}
-        particleRadius={4}
-        particleSize={128 * 4}
-        simulationHook={useSimulationMaterial}
-      />
-      {/* <axesHelper /> */}
-      <OrbitControls />
-    </Canvas>
+    <div style={{ width: 600, height: 600, display: "flex", justifyContent: "center", alignItems: "center" }}>
+
+      <Canvas
+        camera={{ position: [1.5, 1.5, 2.5] }}>
+        <ambientLight intensity={10} />
+        <FBOParticles
+          particleColorClose={new THREE.Vector3(0.34, 0.53, 0.96)}
+          particleColorFar={new THREE.Vector3(0.34, 0.53, 0.96)}
+          // particleColorFar={new THREE.Vector3(0.97, 0.70, 0.45)}
+          particleRadius={4}
+          particleSize={128 * 4}
+          simulationHook={useSimulationMaterial}
+        />
+        {/* <axesHelper /> */}
+        <OrbitControls />
+      </Canvas>
+    </div>
   );
 };
 export default ShaderEngineFBO;

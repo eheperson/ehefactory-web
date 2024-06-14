@@ -26,7 +26,7 @@ const TorusKnot: React.FC<TorusKnotProps & { offset: number }> = ({ position, si
 
 const ThreeFiberDefault = () => {
     return (
-        <>
+        <div style={{ width: 600, height: 600, display: "flex", justifyContent: "center", alignItems: "center" }}>
             <Canvas camera={{ position: [0, 0, 10] }}>
                 <directionalLight position={[0, 0, 2]} intensity={1} />
                 <ambientLight intensity={0.8} />
@@ -34,7 +34,7 @@ const ThreeFiberDefault = () => {
                     <TorusKnot position={[0, 0, 0]} size={[5, 0.5, 1000, 100, 4]} color="red" offset={0} />
                 </group>
             </Canvas>
-        </>
+        </div>
     );
 }
 

@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 
-import ShaderLab from "./ShaderLab";
+import Generative2D from "./Generative2D";
+import RayMarchingExample from "./RayMarchingExample";
 import DynamicTorus from "./DynamicTorus";
 import ShaderEngineFBO from './ShaderEngineFBO';
 import ThreeFiberBasics from './ThreeFiberBasics';
@@ -9,6 +10,7 @@ import ThreeFiberDefault from "./ThreeFiberDefault";
 import ThreeFiberDreiLeva from "./ThreeFiberDreiLeva";
 import FBOParticlesChaotic from "./FBOParticlesChaotic";
 import FBOParticlesGeometric from "./FBOParticlesGeometric";
+import ShaderLab from './ShaderLab';
 
 interface CanvasContextProps {
     selectedComponent: string;
@@ -27,12 +29,9 @@ const NotRealCanvas: React.FC = () => {
         <div style={{
             zIndex: -99,
             background: "black",
-            width: "100vw",
-            height: "100vh",
+            // width: 600*0.9,
+            // height: 600*0.9,
             position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)"
         }}>
             {(() => {
                 switch (selectedComponent) {
@@ -42,8 +41,8 @@ const NotRealCanvas: React.FC = () => {
                         return <ThreeFiberDreiLeva />;
                     case 'ShaderEngineFBO':
                         return <ShaderEngineFBO />;
-                    case 'ShaderLab':
-                        return <ShaderLab />;
+                    case 'Generative2D':
+                        return <Generative2D />;
                     case 'DynamicTorus':
                         return <DynamicTorus />;
                     case 'ParticleSimulator':
@@ -52,8 +51,14 @@ const NotRealCanvas: React.FC = () => {
                         return <FBOParticlesChaotic />;
                     case 'FBOParticlesGeometric':
                         return <FBOParticlesGeometric />;
+                    case 'FBOParticlesGeometric':
+                        return <FBOParticlesGeometric />;
+                    case 'RayMarchingExample':
+                        return <RayMarchingExample />;
                     case 'x':
                         return <ThreeFiberDefault />;
+                    case 'ShaderLab':
+                        return <ShaderLab />;
                     default:
                         return <ShaderLab />;
                 }

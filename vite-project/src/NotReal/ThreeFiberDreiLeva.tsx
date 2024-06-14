@@ -98,14 +98,14 @@ const Scene: React.FC = () => {
 const ThreeFiberDreiLeva: React.FC = () => {
 
     return (
-        <>
+        <div style={{ width: 600, height: 600, display: "flex", justifyContent: "center", alignItems: "center" }}>
             <div className="leva__panel">
                 <Leva fill />
             </div>
             <Canvas camera={{ position: [0, 0, 5] }}>
                 <Scene />
             </Canvas>
-        </>
+        </div>
     );
 }
 

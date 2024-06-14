@@ -14,7 +14,7 @@ interface FBOParticlesProps {
     simulationHook: (size: number) => THREE.ShaderMaterial;
 }
 
-const FBOParticles: React.FC<FBOParticlesProps> = ({ particleSize=256,particleRadius=2.0, particleColorClose=new THREE.Vector3(0.34, 0.53, 0.96), particleColorFar=new THREE.Vector3(0.97, 0.70, 0.45), simulationHook }) => {
+const FBOParticles: React.FC<FBOParticlesProps> = ({ particleSize = 256, particleRadius = 2.0, particleColorClose = new THREE.Vector3(0.34, 0.53, 0.96), particleColorFar = new THREE.Vector3(0.97, 0.70, 0.45), simulationHook }) => {
     const [size, _] = useState(particleSize);
     const simulationMaterial = simulationHook(particleSize);
     const points = useRef<THREE.Points>(null);
@@ -46,10 +46,10 @@ const FBOParticles: React.FC<FBOParticlesProps> = ({ particleSize=256,particleRa
     }, [size]);
 
     const uniforms = useMemo(() => ({
-        uPositions: {value: 0.0,},
-        uRadius: {value: particleRadius,},
-        uParticleColorClose: {value: particleColorClose},
-        uParticleColorFar: {value: particleColorFar},
+        uPositions: { value: 0.0, },
+        uRadius: { value: particleRadius, },
+        uParticleColorClose: { value: particleColorClose },
+        uParticleColorFar: { value: particleColorFar },
     }), []);
 
     useFrame((state) => {

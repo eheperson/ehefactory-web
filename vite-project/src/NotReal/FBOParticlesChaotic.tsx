@@ -17,7 +17,7 @@ const getRandomData = (width: number, height: number): Float32Array => {
   for (let i = 0; i < length; i++) {
     const stride = i * 4;
 
-    const distance = Math.sqrt(Math.random()) * 200.0;
+    const distance = Math.sqrt(Math.random()) * 2000.0;
     const theta = THREE.MathUtils.randFloatSpread(360);
     const phi = THREE.MathUtils.randFloatSpread(360);
 
@@ -41,7 +41,7 @@ const useSimulationMaterial = (size: number) => {
     positionsTexture.needsUpdate = true;
     const simulationUniforms = {
       positions: { value: positionsTexture },
-      uFrequency: { value: 1.0 },
+      uFrequency: { value: 0.25 },
       uTime: { value: 0 },
     };
 
@@ -56,18 +56,20 @@ const useSimulationMaterial = (size: number) => {
 
 const FBOParticlesChaotic: React.FC = () => {
   return (
-    <Canvas camera={{ position: [1.5, 1.5, 2.5] }}>
-      <ambientLight intensity={10} />
-      <FBOParticles
-        // particleColorClose={new THREE.Vector3(0.34, 0.53, 0.96)}
-        // particleColorFar={new THREE.Vector3(0.34, 0.53, 0.96)}
-        // particleColorFar={new THREE.Vector3(0.97, 0.70, 0.45)}
-        particleRadius={2}
-        particleSize={128*6}
-        simulationHook={useSimulationMaterial}
-      />
-      <OrbitControls />
-    </Canvas>
+    <div style={{ width: 600, height: 600, display: "flex", justifyContent: "center", alignItems: "center" }}>
+      <Canvas camera={{ position: [1.5, 1.5, 2.5] }}>
+        <ambientLight intensity={10} />
+        <FBOParticles
+          // particleColorClose={new THREE.Vector3(0.34, 0.53, 0.96)}
+          // particleColorFar={new THREE.Vector3(0.34, 0.53, 0.96)}
+          // particleColorFar={new THREE.Vector3(0.97, 0.70, 0.45)}
+          particleRadius={5}
+          particleSize={128}
+          simulationHook={useSimulationMaterial}
+        />
+        <OrbitControls />
+      </Canvas>
+    </div>
   );
 };
 

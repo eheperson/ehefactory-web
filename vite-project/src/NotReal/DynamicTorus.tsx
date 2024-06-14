@@ -49,7 +49,7 @@ const Blob = () => {
         fragmentShader={fragmentShader}
         vertexShader={vertexShader}
         uniforms={uniforms}
-        wireframe={false}
+        wireframe={true}
       />
     </mesh>
   );
@@ -58,32 +58,34 @@ const Blob = () => {
 
 const DynamicTorus = () => {
   return (
-    <Canvas
-      camera={{ position: [0, 0, 20] }}
-      gl={{
-        powerPreference: "high-performance",
-        alpha: false,
-        antialias: false,
-        stencil: false,
-        depth: false
-      }}
-    >
-      <color attach="background" args={["#050505"]} />
-      <fog color="#161616" attach="fog" near={8} far={30} />
-      <ambientLight intensity={10} />
-      <directionalLight position={[-1, 2, 2]} intensity={4} />
-      <Suspense fallback={<Html center>Loading.</Html>}>
-        <Blob />
-      </Suspense>
-      {/* <axesHelper /> */}
-      <OrbitControls />
-      <EffectComposer>
-        <Bloom luminanceThreshold={0} luminanceSmoothing={0.9} height={300} />
-        <DepthOfField focusDistance={0.5} focalLength={0.02} bokehScale={0.1} height={500} />
-        <Vignette eskil={false} offset={0.1} darkness={1.1} />
-        <Noise opacity={0.02} />
-      </EffectComposer>
-    </Canvas>
+    <div style={{ width: 600, height: 600, display: "flex", justifyContent: "center", alignItems: "center" }}>
+      <Canvas
+        camera={{ position: [0, 0, 20] }}
+        gl={{
+          powerPreference: "high-performance",
+          alpha: false,
+          antialias: false,
+          stencil: false,
+          depth: false
+        }}
+      >
+        <color attach="background" args={["#050505"]} />
+        <fog color="#161616" attach="fog" near={8} far={30} />
+        <ambientLight intensity={10} />
+        <directionalLight position={[-1, 2, 2]} intensity={4} />
+        <Suspense fallback={<Html center>Loading.</Html>}>
+          <Blob />
+        </Suspense>
+        {/* <axesHelper /> */}
+        <OrbitControls />
+        <EffectComposer>
+          <Bloom luminanceThreshold={0} luminanceSmoothing={0.9} height={300} />
+          <DepthOfField focusDistance={0.5} focalLength={0.02} bokehScale={0.1} height={500} />
+          <Vignette eskil={false} offset={0.1} darkness={1.1} />
+          <Noise opacity={0.02} />
+        </EffectComposer>
+      </Canvas>
+    </div>
   );
 };
 

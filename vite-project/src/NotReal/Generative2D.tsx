@@ -2,9 +2,8 @@ import * as THREE from 'three';
 import React, { useRef, Suspense, useState, useEffect } from 'react';
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 
-import vertexShader from '../assets/shaders/ShaderLab.vs';
-import fragmentShader from '../assets/shaders/ShaderLab.fs';
-
+import vertexShader from '../assets/shaders/Generative2D.vs';
+import fragmentShader from '../assets/shaders/Generative2D.fs';
 
 const TestPlane: React.FC = () => {
   const shaderRef = useRef<THREE.ShaderMaterial>(null);
@@ -21,7 +20,7 @@ const TestPlane: React.FC = () => {
     if (shaderRef.current) {
       shaderRef.current.uniforms.uTime.value = clock.getElapsedTime();
     }
-    // console.log("THREE size.width: ", size.width, "THREE size.height: ", size.height)
+    console.log("THREE size.width: ", size.width, "THREE size.height: ", size.height)
   });
 
   return (
@@ -75,7 +74,9 @@ const Scene: React.FC = () => {
 };
 
 const ShaderLab: React.FC = () => {
-  return <Scene />;
+  return (
+    <Scene />
+  );
 };
 
 export default ShaderLab;
